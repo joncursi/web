@@ -1,0 +1,115 @@
+{
+  "author": "Jon Cursi <joncursi@gmail.com>",
+  "bugs": {
+    "email": "joncursi@gmail.com",
+    "url": "https://github.com/joncursi/web/issues"
+  },
+  "config": {
+    "coverageDir": "coverage"
+  },
+  "contributors": [
+    "Jon Cursi <joncursi@gmail.com>"
+  ],
+  "dependencies": {
+    "@zeit/next-css": "1.0.1",
+    "express": "4.16.4",
+    "htmlescape": "1.1.1",
+    "material-colors": "1.2.6",
+    "next": "7.0.2",
+    "next-routes": "1.4.2",
+    "react": "16.7.0",
+    "react-art": "16.7.0",
+    "react-dom": "16.7.0",
+    "react-ga": "2.5.6",
+    "sitemap": "2.1.0",
+    "styled-jsx": "3.2.0"
+  },
+  "description": "💍 Wedding website for Michelle and I",
+  "devDependencies": {
+    "@babel/preset-flow": "7.0.0",
+    "@joncursi/eslint-config": "4.0.0",
+    "cross-env": "5.2.0",
+    "dotenv": "6.2.0",
+    "file-loader": "3.0.1",
+    "flow-bin": "0.91.0",
+    "flow-typed": "2.5.1",
+    "husky": "1.3.1",
+    "lint-staged": "8.1.1",
+    "npm-run-all": "4.1.5",
+    "rimraf": "2.6.3",
+    "url-loader": "1.1.2",
+    "webpack-bundle-analyzer": "3.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@joncursi/eslint-config"
+    ],
+    "plugins": []
+  },
+  "eslintIgnore": [
+    "coverage",
+    "fastlane",
+    "flow-typed",
+    "node_modules"
+  ],
+  "homepage": "https://github.com/joncursi/web#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "joncursi",
+    "web"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": "eslint --rule 'flowtype-errors/show-errors: 0'",
+    "*.md": "markdownlint --config node_modules/@joncursi/eslint-config/markdownlint.config.json"
+  },
+  "name": "web",
+  "now": {
+    "engines": {
+      "node": ">=9.2.1"
+    },
+    "files": [
+      "./app/.next",
+      "./app/constants/env.js",
+      "./app/constants/routes.js",
+      "./app/static",
+      "./package.json",
+      "./routes.js",
+      "./server.js"
+    ],
+    "name": "web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joncursi/web.git"
+  },
+  "scripts": {
+    "analyze": "cross-env ANALYZE=1 next build app",
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 next build app",
+    "now-build": "echo \"Don't do anything here\"",
+    "cover:open": "npm-run-all cover:open:*",
+    "cover:open:types": "opn $npm_package_config_coverageDir/flow-report/index.html",
+    "cover:open:unit": "opn $npm_package_config_coverageDir/lcov-report/index.html",
+    "coverage": "npm-run-all coverage:*",
+    "coverage:types": "flow-coverage-report -i 'components/**/*.js' -i 'constants/**/*.js' -i 'helpers/**/*.js' -i 'layouts/**/*.js' -i 'pages/**/*.js' -t html -t json -t text -o 'coverage/flow-report'",
+    "dev": "dotenv node server.js",
+    "postinstall": "npm run update:types",
+    "production:deploy": "bundle exec fastlane web production",
+    "production:deploy:now": "npm run build && now --dotenv=.env.production --debug",
+    "start": "node server.js",
+    "test": "npm run test:lint",
+    "test:lint": "eslint --rule 'flowtype-errors/show-errors: 0' --fix .",
+    "test:types": "flow",
+    "update:types": "[ \"$NODE_ENV\" = production ] || flow-typed install --overwrite"
+  },
+  "version": "0.0.1"
+}
