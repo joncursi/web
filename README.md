@@ -1,6 +1,6 @@
 # Web
 
-💍 Wedding website for Michelle and I
+😎 Official "Jon Cursi" personal brand website.
 
 [![CircleCI](https://circleci.com/gh/joncursi/web.svg?style=shield)](https://circleci.com/gh/joncursi/web)
 

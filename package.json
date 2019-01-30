@@ -22,9 +22,9 @@
     "react-dom": "16.7.0",
     "react-ga": "2.5.6",
     "sitemap": "2.1.0",
-    "styled-jsx": "3.2.0"
+    "styled-jsx": "3.1.2"
   },
-  "description": "💍 Wedding website for Michelle and I",
+  "description": "😎 Official \"Jon Cursi\" personal brand website.",
   "devDependencies": {
     "@babel/preset-flow": "7.0.0",
     "@joncursi/eslint-config": "4.0.0",
