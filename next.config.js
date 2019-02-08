@@ -47,6 +47,22 @@ module.exports = withCSS({
           },
         ],
       },
+      // load fonts
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              fallback: 'file-loader',
+              limit: 8192,
+              name: '[name]-[hash].[ext]',
+              outputPath: '../static/fonts/',
+              publicPath: '/_next/static/fonts/',
+            },
+          },
+        ],
+      },
     );
 
     // Remove minifed react aliases for material-ui so production builds work
