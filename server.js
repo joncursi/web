@@ -34,6 +34,7 @@ expressApp.get('/sitemap.xml', (req, res) => {
       {
         changefreq: 'monthly',
         priority: 1,
+        url: '/',
       },
     ],
   });
