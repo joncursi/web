@@ -6,7 +6,7 @@
 import css from 'styled-jsx/css';
 import materialColors from 'material-colors';
 
-import DIMS from '../../constants/dims';
+import DIMS from '../../../constants/dims';
 
 const BRAND_HEIGHT = 50;
 
