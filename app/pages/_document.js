@@ -279,7 +279,7 @@ class Document extends DocumentImport<PropsFlowType> {
           </style>
         </Head>
 
-        <body bgColor={materialColors.black}>
+        <body bgColor={materialColors.black} style={{ overflow: 'hidden' }}>
           <Main />
 
           {/* eslint-disable react/no-danger */}

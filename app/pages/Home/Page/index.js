@@ -83,7 +83,7 @@ const Page = (): React.Node => {
                 cryptocurrency on the internet. Follow me!
               </p>
 
-              <p>
+              <p className="icons">
                 <a
                   className="iconLink"
                   href="https://www.cheddur.com/users/joncursi"
