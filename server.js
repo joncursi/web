@@ -26,7 +26,7 @@ const nextHandle = nextRoutes.getRequestHandler(nextApp);
 
 // Configure `sitemap.xml`
 expressApp.get('/sitemap.xml', (req, res) => {
-  const hostname = `${req.protocol}://${req.get('host')}`;
+  const hostname = `https://${req.get('host')}`;
   const sitemap = sm.createSitemap({
     cacheTime: 600000,
     hostname,
