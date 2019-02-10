@@ -17,7 +17,7 @@ export default css`
     0% {
       opacity: 0;
     }
-    25% {
+    50% {
       opacity: 0;
     }
     100% {

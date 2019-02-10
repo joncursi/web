@@ -123,9 +123,11 @@ const Page = (): React.Node => {
               <p>
                 <a
                   className="textLink textEmail"
-                  href="mailto:joncursi@gmail.com"
+                  href="https://earn.com/joncursi/"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  joncursi@gmail.com
+                  Business Inquiries
                 </a>
               </p>
             </div>
