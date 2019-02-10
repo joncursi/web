@@ -50,7 +50,7 @@ expressApp.get('/sitemap.xml', (req, res) => {
 
 // Configure `robots.txt`
 expressApp.get('/robots.txt', (req, res) => {
-  const hostname = `${req.protocol}://${req.get('host')}`;
+  const hostname = `https://${req.get('host')}`;
   res.setHeader('content-type', 'text/plain');
   res.send(
     `User-agent: *\n${
