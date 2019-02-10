@@ -14,8 +14,7 @@ import styles from './styles';
 const Page = (): React.Node => {
   const profiles = [
     {
-      href:
-        'https://www.youtube.com/channel/UCYFy6tdjA0anVL6NiscUX8w?sub_confirmation=1',
+      href: 'https://www.youtube.com/joncursi?sub_confirmation=1',
       icon: 'youtube',
       target: '_blank',
     },
