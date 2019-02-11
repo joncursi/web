@@ -39,7 +39,7 @@ export default css`
     top: 0;
   }
   .contentContainer {
-    align-items: center;
+    align-items: flex-end;
     bottom: 0;
     display: flex;
     left: 0;
@@ -106,10 +106,11 @@ export default css`
 
   @media (min-width: ${DIMS.BREAKPOINTS.MEDIUM}px) {
     .background {
-      left: -25%;
+      left: -35%;
       opacity: 1;
     }
     .contentContainer {
+      align-items: center;
       left: 50%;
     }
     .logo {
