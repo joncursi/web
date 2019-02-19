@@ -52,13 +52,14 @@ expressApp.get('/sitemap.xml', (req, res) => {
 expressApp.get('/robots.txt', (req, res) => {
   const hostname = `https://${req.get('host')}`;
   res.setHeader('content-type', 'text/plain');
-  res.send(
-    `User-agent: *\n${
-      ENV.NODE_ENV === 'production'
-        ? `Sitemap: ${hostname}/sitemap.xml`
-        : 'Disallow: /'
-    }`,
-  );
+  res.send(`User-agent: *
+${
+  ENV.NODE_ENV === 'production'
+    ? `Sitemap: ${hostname}/sitemap.xml`
+    : 'Disallow: /'
+}
+Disallow: /Home
+`);
 });
 
 // Render a next route
