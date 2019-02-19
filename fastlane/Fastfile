@@ -5,7 +5,7 @@
 # CONFIG -------------------------------------------------------------------------------------------
 
 # Automatically update fastlane if a new version is available
-update_fastlane
+# update_fastlane
 
 # Enforce a minimum fastlane version
 fastlane_version "2.116.0"
