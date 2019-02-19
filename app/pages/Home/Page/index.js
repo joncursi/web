@@ -43,11 +43,6 @@ const Page = (): React.Node => {
       icon: 'github-circle',
       target: '_blank',
     },
-    {
-      href: 'https://t.me/joncursi',
-      icon: 'telegram',
-      target: '_blank',
-    },
   ];
 
   return (
