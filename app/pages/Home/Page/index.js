@@ -69,11 +69,13 @@ const Page = (): React.Node => {
               </div>
 
               <p>
-                {'I run '}
+                {
+                  "I'm a software engineer who builds top-notch web and mobile apps, such as "
+                }
                 <a className="textLink" href="https://www.cheddur.com/">
                   Cheddur
                 </a>
-                , the social network of crypto, and make videos about
+                &mdash;the social network of crypto. I also make videos about
                 cryptocurrency on the internet. Follow me!
               </p>
 
