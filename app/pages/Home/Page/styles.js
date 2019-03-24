@@ -4,7 +4,6 @@
  */
 
 import css from 'styled-jsx/css';
-import grey from '@material-ui/core/colors/grey';
 
 import DIMS from '../../../constants/dims';
 
@@ -66,11 +65,6 @@ export default css`
     height: ${BRAND_HEIGHT_SMALL - DIMS.LAYOUT_PADDING}px;
     width: auto;
   }
-  a,
-  p {
-    color: ${grey[500]};
-    font-size: 20px;
-  }
   .textLink {
     color: red;
     text-decoration: none;
@@ -116,10 +110,6 @@ export default css`
     .wordmark {
       height: ${BRAND_HEIGHT_MEDIUM - DIMS.LAYOUT_PADDING}px;
     }
-    a,
-    p {
-      font-size: 22px;
-    }
   }
 
   @media (min-width: ${DIMS.BREAKPOINTS.LARGE}px) {
@@ -131,10 +121,6 @@ export default css`
     }
     .wordmark {
       height: ${BRAND_HEIGHT_LARGE - DIMS.LAYOUT_PADDING}px;
-    }
-    a,
-    p {
-      font-size: 24px;
     }
   }
 `;
