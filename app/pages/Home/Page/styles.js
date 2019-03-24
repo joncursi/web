@@ -75,24 +75,26 @@ export default css`
     color: red;
     text-decoration: none;
   }
-  .icons {
+  .profiles {
     display: flex;
     flex-wrap: wrap;
   }
-  .logoCheddur {
-    height: 28px;
-    width: 28px;
-  }
-  .iconLink {
+  .profile {
     align-items: center;
     color: red;
     display: flex;
+    height: 40px;
+    justify-content: center;
     margin-right: ${DIMS.LAYOUT_PADDING}px;
     text-decoration: none;
     transition: all 0.5s ease;
+    width: 40px;
   }
-  .iconLink:hover {
+  .profile:hover {
     opacity: 0.5;
+  }
+  .imageIcon {
+    margin-top: 4px;
   }
   .textEmail {
     font-size: 80%;

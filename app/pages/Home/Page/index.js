@@ -7,6 +7,7 @@ import * as React from 'react';
 import materialColors from 'material-colors';
 import MaterialCommunityIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import Link from '../../../components/Link';
 import PageLayout from '../../../layouts/PageLayout';
 
 import styles from './styles';
@@ -14,34 +15,74 @@ import styles from './styles';
 const Page = (): React.Node => {
   const profiles = [
     {
-      href: 'https://www.youtube.com/joncursi?sub_confirmation=1',
+      image: {
+        alt: 'Cheddur',
+        src: '/static/img/cheddur-icon-white.png',
+        style: {
+          height: 28,
+          width: 28,
+        },
+      },
+      link: {
+        target: '_blank',
+        to: 'https://www.cheddur.com/users/joncursi',
+      },
+    },
+    {
       icon: 'youtube',
-      target: '_blank',
+      link: {
+        target: '_blank',
+        to: 'https://www.youtube.com/joncursi?sub_confirmation=1',
+      },
     },
     {
-      href: 'https://www.facebook.com/JonCursi/',
       icon: 'facebook',
-      target: '_blank',
+      link: {
+        target: '_blank',
+        to: 'https://www.facebook.com/JonCursi/',
+      },
     },
     {
-      href: 'https://twitter.com/joncursi',
       icon: 'twitter',
-      target: '_blank',
+      link: {
+        target: '_blank',
+        to: 'https://twitter.com/joncursi',
+      },
     },
     {
-      href: 'https://www.instagram.com/joncursi/',
       icon: 'instagram',
-      target: '_blank',
+      link: {
+        target: '_blank',
+        to: 'https://www.instagram.com/joncursi/',
+      },
     },
     {
-      href: 'https://www.linkedin.com/in/joncursi/',
       icon: 'linkedin',
-      target: '_blank',
+      link: {
+        target: '_blank',
+        to: 'https://www.linkedin.com/in/joncursi/',
+      },
     },
     {
-      href: 'https://github.com/joncursi',
       icon: 'github-circle',
-      target: '_blank',
+      link: {
+        target: '_blank',
+        to: 'https://github.com/joncursi',
+      },
+    },
+    {
+      image: {
+        alt: 'Steemit',
+        src: '/static/img/steemit-icon-white.png',
+        style: {
+          height: 30,
+          width: 30,
+        },
+      },
+      link: {
+        target: '_blank',
+        to: 'https://steemit.com/@joncursi',
+      },
     },
   ];
 
@@ -79,42 +120,31 @@ const Page = (): React.Node => {
                 cryptocurrency on the internet. Follow me!
               </p>
 
-              <p className="icons">
-                <a
-                  className="iconLink"
-                  href="https://www.cheddur.com/users/joncursi"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <img
-                    alt="Cheddur"
-                    className="logoCheddur"
-                    src="/static/img/cheddur-icon-white.png"
-                  />
-                </a>
-
+              <div className="profiles">
                 {profiles.map(
                   (profile): React.Node => (
-                    <a
-                      href={profile.href}
-                      className="iconLink"
-                      key={profile.href}
-                      rel={
-                        profile.target === '_blank'
-                          ? 'noopener noreferrer'
-                          : undefined
-                      }
-                      target={profile.target}
-                    >
-                      <MaterialCommunityIcon
-                        color={materialColors.white}
-                        name={profile.icon}
-                        size={40}
-                      />
-                    </a>
+                    <div className="profile" key={profile.link.to}>
+                      <Link {...profile.link} className="iconLink">
+                        {profile.icon && (
+                          <MaterialCommunityIcon
+                            color={materialColors.white}
+                            name={profile.icon}
+                            size={40}
+                          />
+                        )}
+
+                        {profile.image && (
+                          <img
+                            alt={profile.image.alt}
+                            className="imageIcon"
+                            style={profile.image.style}
+                          />
+                        )}
+                      </Link>
+                    </div>
                   ),
                 )}
-              </p>
+              </div>
 
               <p>
                 <a
