@@ -1,8 +1,0 @@
-patch-package
---- a/node_modules/react-native-vector-icons/dist/lib/react-native.js
-+++ b/node_modules/react-native-vector-icons/dist/lib/react-native.js
-@@ -1 +1 @@
--Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require("react-native");Object.keys(_reactNative).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _reactNative[key];}});});
-\ No newline at end of file
-+Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require('react-native-web');Object.keys(_reactNative).forEach(function(key){if(key==="default"||key==="__esModule")return;Object.defineProperty(exports,key,{enumerable:true,get:function get(){return _reactNative[key];}});});
-\ No newline at end of file

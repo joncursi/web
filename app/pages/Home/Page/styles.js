@@ -4,13 +4,19 @@
  */
 
 import css from 'styled-jsx/css';
-import materialColors from 'material-colors';
+import grey from '@material-ui/core/colors/grey';
 
 import DIMS from '../../../constants/dims';
 
 const BRAND_HEIGHT_SMALL = 35;
 const BRAND_HEIGHT_MEDIUM = 40;
 const BRAND_HEIGHT_LARGE = 50;
+
+export const globalStyles = css.global`
+  .typographyDescriptionRoot {
+    font-weight: 400 !important;
+  }
+`;
 
 export default css`
   @keyframes fadein {
@@ -52,14 +58,8 @@ export default css`
   }
   .containerBrand {
     align-items: center;
+    margin-bottom: ${DIMS.LAYOUT_PADDING * 1.5}px;
     display: flex;
-  }
-  .logo {
-    border-radius: ${DIMS.BORDER_RADIUS_DEFAULT}px;
-    display: inline-block;
-    height: ${BRAND_HEIGHT_SMALL}px;
-    margin-right: ${DIMS.BORDER_RADIUS_DEFAULT * 8}px;
-    width: auto;
   }
   .wordmark {
     display: inline-block;
@@ -68,7 +68,7 @@ export default css`
   }
   a,
   p {
-    color: ${materialColors.grey['500']};
+    color: ${grey[500]};
     font-size: 20px;
   }
   .textLink {
@@ -78,6 +78,7 @@ export default css`
   .profiles {
     display: flex;
     flex-wrap: wrap;
+    margin: ${DIMS.LAYOUT_PADDING * 1.5}px 0 ${DIMS.LAYOUT_PADDING * 1.5}px -${DIMS.LAYOUT_PADDING / 2}px;
   }
   .profile {
     align-items: center;
@@ -90,11 +91,8 @@ export default css`
     transition: all 0.5s ease;
     width: 40px;
   }
-  .profile:hover {
-    opacity: 0.5;
-  }
   .imageIcon {
-    margin-top: 4px;
+    margin-top: 2px;
   }
   .textEmail {
     font-size: 80%;
@@ -115,9 +113,6 @@ export default css`
       align-items: center;
       left: 50%;
     }
-    .logo {
-      height: ${BRAND_HEIGHT_MEDIUM}px;
-    }
     .wordmark {
       height: ${BRAND_HEIGHT_MEDIUM - DIMS.LAYOUT_PADDING}px;
     }
@@ -133,9 +128,6 @@ export default css`
     }
     .containerInfo {
       padding: ${DIMS.LAYOUT_PADDING * 8}px;
-    }
-    .logo {
-      height: ${BRAND_HEIGHT_LARGE}px;
     }
     .wordmark {
       height: ${BRAND_HEIGHT_LARGE - DIMS.LAYOUT_PADDING}px;

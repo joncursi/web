@@ -5,4 +5,7 @@
 
 /* eslint-disable sort-keys */
 
-export default {};
+export default {
+  SCREEN_BACKGROUND: '#000',
+  WHITE: '#fff',
+};

@@ -6,14 +6,12 @@
 /* eslint-disable filenames/match-regex, filenames/match-exported */
 
 import * as React from 'react';
-import AppRegistry from 'react-native-web/dist/cjs/exports/AppRegistry';
 import DocumentImport, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
 import htmlescape from 'htmlescape';
-import MaterialCommunityIcons from 'react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf';
-import materialColors from 'material-colors';
 
 import type { ContextFlowType } from '../types';
+import COLORS from '../constants/colors';
 
 // choose which env variables should be available on the client
 const { GOOGLE_ANALYTICS_TRACKING_ID_WEB, NODE_ENV } = process.env;
@@ -39,6 +37,7 @@ const normalizeNextElements = `
 let index = 0;
 
 type PropsFlowType = {
+  pageContext: Object | null,
   url: string,
 };
 
@@ -52,30 +51,60 @@ class Document extends DocumentImport<PropsFlowType> {
   static async getInitialProps(ctx: CtxFlowType): Promise<PropsFlowType> {
     const props = await super.getInitialProps(ctx);
 
-    // build the page
+    // Render app and page and get the context of the page with collected side effects.
+    let pageContext;
     // eslint-disable-next-line object-curly-newline
-    const page = ctx.renderPage();
+    const page = ctx.renderPage(
+      (Component): any => {
+        const WrappedComponent = (componentProps): React.Node => {
+          pageContext = componentProps.pageContext;
+          return <Component {...componentProps} />;
+        };
 
-    // register the app with react-native-web
-    AppRegistry.registerComponent('Main', (): Function => Main);
+        /*
+        WrappedComponent.propTypes = {
+          pageContext: PropTypes.object.isRequired,
+        };
+        */
 
-    // build a separate stylesheet for react-native-web universal components
-    const { getStyleElement } = AppRegistry.getApplication('Main', {});
-    const reactNativeWebStyles = getStyleElement();
-    // build a separate stylesheet for styled-jsx styles
-    const styledJsxStyles = flush();
-    // combine styles
-    const styles = [
-      props.styles,
-      /* eslint-disable react/no-danger, no-plusplus */
+        return WrappedComponent;
+      },
+    );
+
+    let css;
+    // It might be undefined, e.g. after an error.
+    if (pageContext) {
+      css = pageContext.sheetsRegistry.toString();
+    }
+
+    /* eslint-disable react/no-danger, no-plusplus */
+    // next styles
+    const nextStyles = (
       <style
         dangerouslySetInnerHTML={{ __html: normalizeNextElements }}
         key={index++}
-      />,
-      /* eslint-enable react/no-danger, no-plusplus */
-      ...styledJsxStyles,
-      reactNativeWebStyles,
-    ];
+      />
+    );
+    // material ui styles
+    const materialUiStyles = (
+      <style dangerouslySetInnerHTML={{ __html: css }} id="jss-server-side" />
+    );
+    // build a separate stylesheet for styled-jsx styles
+    const styledJsxStyles = flush() || null;
+    /* eslint-enable react/no-danger, no-plusplus */
+
+    // combine styles
+    const styles = (
+      <>
+        {props.styles}
+
+        {nextStyles}
+
+        {materialUiStyles}
+
+        {styledJsxStyles}
+      </>
+    );
 
     // get the current URL being requested
     const url = `https://${ctx.req.headers.host}${ctx.req.url}`;
@@ -84,25 +113,23 @@ class Document extends DocumentImport<PropsFlowType> {
     return {
       ...page,
       ...props,
+      pageContext,
       styles,
       url,
     };
   }
 
   render(): React.Node {
-    const { url } = this.props;
+    const { pageContext, url } = this.props;
 
     return (
-      <html lang="en">
+      <html lang="en" style={{ height: '100%' }}>
         <Head>
           {/* General */}
           <meta charSet="utf-8" />
           <meta content="text/html; charset=utf-8" httpEquiv="content-type" />
           <meta
-            content={
-              'user-scalable=0, initial-scale=1, ' +
-              'minimum-scale=1, width=device-width, height=device-height'
-            }
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
             name="viewport"
           />
           <meta content="joncursi" name="application-name" />
@@ -115,41 +142,14 @@ class Document extends DocumentImport<PropsFlowType> {
             }
             name="robots"
           />
-
           {/* Google */}
           <meta
             content="RCyMwbqpOJnycWzhUXhN_Rau4zLKEJjlJOPrugGp21c"
             name="google-site-verification"
           />
-
-          {/* Icons */}
-          <link href="/static/img/favicon.png" rel="shortcut icon" />
-
-          {/* Facebook Open Graph */}
-          <meta content="en_US" property="og:locale" />
-          <meta content="joncursi" property="og:site_name" />
-          <meta content="website" property="og:type" />
-          <meta content={url} property="og:url" />
-
-          {/* Twitter Cards */}
-          <meta content="US" name="twitter:app:country" />
-          <meta content="summary" name="twitter:card" />
-          <meta content={url} name="twitter:url" />
-
-          {/* Styles */}
-          <link rel="stylesheet" href="/static/css/normalize.css" />
-
-          {/* Icons */}
-          <style type="text/css">
-            {`
-              @font-face {
-                src: url(${MaterialCommunityIcons});
-                font-family: MaterialCommunityIcons;
-              }
-            `}
-          </style>
-
           {/* Favicons */}
+          {/* Favicons */}
+          <link href="/static/img/favicon.png" rel="shortcut icon" />
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -226,66 +226,49 @@ class Document extends DocumentImport<PropsFlowType> {
             content="/static/img/favicon/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#ffffff" />
-
+          {/* Facebook Open Graph */}
+          <meta content="en_US" property="og:locale" />
+          <meta content="joncursi" property="og:site_name" />
+          <meta content="website" property="og:type" />
+          <meta content={url} property="og:url" />
+          {/* Twitter Cards */}
+          <meta content="US" name="twitter:app:country" />
+          <meta content="summary" name="twitter:card" />
+          <meta content={url} name="twitter:url" />
+          {/* Material UI */}
+          <meta
+            content={
+              pageContext ? pageContext.theme.palette.primary.main : null
+            }
+            name="theme-color"
+          />
           {/* Fonts */}
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+            rel="stylesheet"
+          />
+          {/* Styles */}
           <style jsx global>
             {`
-              @font-face {
-                font-family: 'Muller ExtraBold';
-                src: url('/static/fonts/muller/extrabold/MullerExtraBold.eot');
-                src: url('/static/fonts/muller/extrabold/MullerExtraBold.eot?#iefix')
-                    format('embedded-opentype'),
-                  url('/static/fonts/muller/extrabold/MullerExtraBold.woff2')
-                    format('woff2'),
-                  url('/static/fonts/muller/extrabold/MullerExtraBold.woff')
-                    format('woff'),
-                  url('/static/fonts/muller/extrabold/MullerExtraBold.ttf')
-                    format('truetype'),
-                  url('/static/fonts/muller/extrabold/MullerExtraBold.svg#MullerExtraBold')
-                    format('svg');
-                font-weight: normal;
-                font-style: normal;
+              * {
+                font-family: 'Roboto', sans-serif;
               }
-
-              @font-face {
-                font-family: 'Muller Medium';
-                src: url('/static/fonts/muller/medium/MullerMedium.eot');
-                src: url('/static/fonts/muller/medium/MullerMedium.eot?#iefix')
-                    format('embedded-opentype'),
-                  url('/static/fonts/muller/medium/MullerMedium.woff2')
-                    format('woff2'),
-                  url('/static/fonts/muller/medium/MullerMedium.woff')
-                    format('woff'),
-                  url('/static/fonts/muller/medium/MullerMedium.ttf')
-                    format('truetype'),
-                  url('/static/fonts/muller/medium/MullerMedium.svg#MullerMedium')
-                    format('svg');
-                font-weight: normal;
-                font-style: normal;
-              }
-
-              h1,
-              h2,
-              h3,
-              h4,
-              h5,
-              h6 {
-                color: ${materialColors.white};
-                font-family: 'Muller ExtraBold', sans-serif;
-              }
-
-              p,
-              span,
-              div,
-              a {
-                color: ${materialColors.white};
-                font-family: 'Muller Medium', sans-serif;
+              #__next {
+                height: 100%;
               }
             `}
           </style>
         </Head>
 
-        <body bgColor={materialColors.black} style={{ overflow: 'hidden' }}>
+        <body
+          bgColor={COLORS.SCREEN_BACKGROUND}
+          style={{
+            backgroundColor: COLORS.SCREEN_BACKGROUND,
+            height: '100%',
+            overflow: 'hidden',
+            width: '100%',
+          }}
+        >
           <Main />
 
           {/* eslint-disable react/no-danger */}

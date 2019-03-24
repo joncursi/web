@@ -4,13 +4,19 @@
  */
 
 import * as React from 'react';
-import materialColors from 'material-colors';
-import MaterialCommunityIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import FacebookIcon from 'mdi-material-ui/Facebook';
+import GithubCircleIcon from 'mdi-material-ui/GithubCircle';
+import IconButton from '@material-ui/core/IconButton';
+import InstagramIcon from 'mdi-material-ui/Instagram';
+import LinkedinIcon from 'mdi-material-ui/Linkedin';
+import TwitterIcon from 'mdi-material-ui/Twitter';
+import Typography from '@material-ui/core/Typography';
+import YoutubeIcon from 'mdi-material-ui/Youtube';
 
 import Link from '../../../components/Link';
 import PageLayout from '../../../layouts/PageLayout';
 
-import styles from './styles';
+import styles, { globalStyles } from './styles';
 
 const Page = (): React.Node => {
   const profiles = [
@@ -19,8 +25,8 @@ const Page = (): React.Node => {
         alt: 'Cheddur',
         src: '/static/img/cheddur-icon-white.png',
         style: {
-          height: 28,
-          width: 28,
+          height: 26,
+          width: 26,
         },
       },
       link: {
@@ -29,42 +35,42 @@ const Page = (): React.Node => {
       },
     },
     {
-      icon: 'youtube',
+      Icon: YoutubeIcon,
       link: {
         target: '_blank',
         to: 'https://www.youtube.com/joncursi?sub_confirmation=1',
       },
     },
     {
-      icon: 'facebook',
+      Icon: FacebookIcon,
       link: {
         target: '_blank',
         to: 'https://www.facebook.com/JonCursi/',
       },
     },
     {
-      icon: 'twitter',
+      Icon: TwitterIcon,
       link: {
         target: '_blank',
         to: 'https://twitter.com/joncursi',
       },
     },
     {
-      icon: 'instagram',
+      Icon: InstagramIcon,
       link: {
         target: '_blank',
         to: 'https://www.instagram.com/joncursi/',
       },
     },
     {
-      icon: 'linkedin',
+      Icon: LinkedinIcon,
       link: {
         target: '_blank',
         to: 'https://www.linkedin.com/in/joncursi/',
       },
     },
     {
-      icon: 'github-circle',
+      Icon: GithubCircleIcon,
       link: {
         target: '_blank',
         to: 'https://github.com/joncursi',
@@ -88,6 +94,9 @@ const Page = (): React.Node => {
 
   return (
     <React.Fragment>
+      <style global jsx>
+        {globalStyles}
+      </style>
       <style jsx>{styles}</style>
 
       <PageLayout>
@@ -98,64 +107,57 @@ const Page = (): React.Node => {
             <div className="containerInfo">
               <div className="containerBrand">
                 <img
-                  alt="Logo"
-                  className="logo"
-                  src="/static/img/brand/logo-hollow-on-white-square.png"
-                />
-                <img
                   alt="Jon Cursi"
                   className="wordmark"
                   src="/static/img/brand/wordmark-white.png"
                 />
               </div>
 
-              <p>
+              <Typography
+                classes={{
+                  root: 'typographyDescriptionRoot',
+                }}
+                color="secondary"
+                variant="h6"
+              >
                 {
                   "I'm a software engineer who builds top-notch web and mobile apps, such as "
                 }
-                <a className="textLink" href="https://www.cheddur.com/">
-                  Cheddur
-                </a>
+                <Link target="_blank" to="https://www.cheddur.com/">
+                  <span className="textLink">Cheddur</span>
+                </Link>
                 &mdash;the social network of crypto. I also make videos about
                 cryptocurrency on the internet. Follow me!
-              </p>
+              </Typography>
 
               <div className="profiles">
                 {profiles.map(
                   (profile): React.Node => (
                     <div className="profile" key={profile.link.to}>
                       <Link {...profile.link} className="iconLink">
-                        {profile.icon && (
-                          <MaterialCommunityIcon
-                            color={materialColors.white}
-                            name={profile.icon}
-                            size={40}
-                          />
-                        )}
+                        <IconButton color="secondary">
+                          {!!profile.Icon && <profile.Icon fontSize="large" />}
 
-                        {profile.image && (
-                          <img
-                            alt={profile.image.alt}
-                            className="imageIcon"
-                            style={profile.image.style}
-                          />
-                        )}
+                          {!!profile.image && (
+                            <img
+                              alt={profile.image.alt}
+                              className="imageIcon"
+                              src={profile.image.src}
+                              style={profile.image.style}
+                            />
+                          )}
+                        </IconButton>
                       </Link>
                     </div>
                   ),
                 )}
               </div>
 
-              <p>
-                <a
-                  className="textLink textEmail"
-                  href="https://earn.com/joncursi/"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Business Inquiries
-                </a>
-              </p>
+              <Typography color="primary" variant="overline">
+                <Link target="_blank" to="https://earn.com/joncursi/">
+                  <span className="textLink">Business Inquiries</span>
+                </Link>
+              </Typography>
             </div>
           </div>
         </div>

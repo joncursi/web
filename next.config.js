@@ -25,12 +25,6 @@ module.exports = withCSS({
     }
 
     config.module.rules.push(
-      // support .mjs files
-      {
-        test: /\.mjs$/,
-        type: 'javascript/auto',
-        use: [],
-      },
       // load images
       {
         test: /\.(jpe?g|png|svg|gif)$/,
@@ -41,8 +35,8 @@ module.exports = withCSS({
               fallback: 'file-loader',
               limit: 8192,
               name: '[name]-[hash].[ext]',
-              outputPath: '../static/images/',
-              publicPath: '/_next/static/images/',
+              outputPath: '../static/img/',
+              publicPath: '/_next/static/img/',
             },
           },
         ],
@@ -64,14 +58,6 @@ module.exports = withCSS({
         ],
       },
     );
-
-    // Remove minifed react aliases for material-ui so production builds work
-    /* eslint-disable no-param-reassign */
-    if (config.resolve.alias) {
-      delete config.resolve.alias.react;
-      delete config.resolve.alias['react-dom'];
-    }
-    /* eslint-enable no-param-reassign */
 
     return config;
   },
