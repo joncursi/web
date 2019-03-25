@@ -126,7 +126,7 @@ const Page = (): React.Node => {
                 <Link target="_blank" to="https://www.cheddur.com/">
                   <span className="textLink">Cheddur</span>
                 </Link>
-                &mdash;the social network of crypto. I also make videos about
+                , the social network of crypto. I also make videos about
                 cryptocurrency on the internet. Follow me!
               </Typography>
 
