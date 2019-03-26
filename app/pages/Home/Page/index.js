@@ -126,8 +126,14 @@ const Page = (): React.Node => {
                 <Link target="_blank" to="https://www.cheddur.com/">
                   <span className="textLink">Cheddur</span>
                 </Link>
-                , the social network of crypto. I also make videos about
-                cryptocurrency on the internet. Follow me!
+                &mdash;
+                {
+                  'the social network of crypto. I also make videos about cryptocurrency on the internet. '
+                }
+                <Link target="_blank" to="https://www.cheddur.com/join">
+                  <span className="textLink">Subscribe to my newsletter</span>
+                </Link>
+                {' and follow me!'}
               </Typography>
 
               <div className="profiles">
@@ -141,7 +147,6 @@ const Page = (): React.Node => {
                           {!!profile.image && (
                             <img
                               alt={profile.image.alt}
-                              className="imageIcon"
                               src={profile.image.src}
                               style={profile.image.style}
                             />

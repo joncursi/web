@@ -85,9 +85,6 @@ export default css`
     transition: all 0.5s ease;
     width: 40px;
   }
-  .imageIcon {
-    margin-top: 2px;
-  }
   .textEmail {
     font-size: 80%;
   }
