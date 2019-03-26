@@ -8,7 +8,7 @@
 # update_fastlane
 
 # Enforce a minimum fastlane version
-fastlane_version "2.118.1"
+fastlane_version "2.119.0"
 
 # Enforce a minimum ruby version
 ruby_version "2.4.2"
