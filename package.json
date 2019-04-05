@@ -92,7 +92,8 @@
       "./routes.js",
       "./server.js"
     ],
-    "name": "web"
+    "name": "web",
+    "scope": "joncursi"
   },
   "repository": {
     "type": "git",
