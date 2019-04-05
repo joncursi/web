@@ -6,6 +6,7 @@
 /* global window */
 
 import ReactGA from 'react-ga';
+import ReactPixel from 'react-facebook-pixel';
 
 import ENV from '../constants/env';
 
@@ -15,10 +16,21 @@ export const initGA = () => {
   });
 };
 
+export const initFBPixel = () => {
+  // https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match
+  const advancedMatching = {};
+  const options = {
+    autoConfig: true,
+    debug: ENV.NODE_ENV === 'development',
+  };
+  ReactPixel.init(ENV.FACEBOOK_PIXEL_TRACKING_ID, advancedMatching, options);
+};
+
 export const logPageView = () => {
   const page = window.location.pathname;
   ReactGA.set({ page });
   ReactGA.pageview(page);
+  ReactPixel.pageView();
 };
 
 export const logEvent = ({

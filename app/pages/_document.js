@@ -14,8 +14,13 @@ import type { ContextFlowType } from '../types';
 import COLORS from '../constants/colors';
 
 // choose which env variables should be available on the client
-const { GOOGLE_ANALYTICS_TRACKING_ID_WEB, NODE_ENV } = process.env;
+const {
+  FACEBOOK_PIXEL_TRACKING_ID,
+  GOOGLE_ANALYTICS_TRACKING_ID_WEB,
+  NODE_ENV,
+} = process.env;
 const ENV = {
+  FACEBOOK_PIXEL_TRACKING_ID,
   GOOGLE_ANALYTICS_TRACKING_ID_WEB,
   NODE_ENV,
 };
