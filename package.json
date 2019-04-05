@@ -117,5 +117,5 @@
     "test:types": "flow",
     "update:types": "[ \"$NODE_ENV\" = production ] || flow-typed install --overwrite"
   },
-  "version": "1.5.1"
+  "version": "1.6.0"
 }
