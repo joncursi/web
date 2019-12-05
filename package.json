@@ -93,7 +93,8 @@
       "./server.js"
     ],
     "name": "web",
-    "scope": "joncursi"
+    "scope": "joncursi",
+    "version": 1
   },
   "repository": {
     "type": "git",
@@ -118,5 +119,5 @@
     "test:types": "flow",
     "update:types": "[ \"$NODE_ENV\" = production ] || flow-typed install --overwrite"
   },
-  "version": "1.6.2"
+  "version": "1.6.1"
 }
