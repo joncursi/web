@@ -81,17 +81,8 @@
   "name": "web",
   "now": {
     "engines": {
-      "node": ">=9.2.1"
+      "node": ">=10.16.0"
     },
-    "files": [
-      "./app/.next",
-      "./app/constants/env.js",
-      "./app/constants/routes.js",
-      "./app/static",
-      "./package.json",
-      "./routes.js",
-      "./server.js"
-    ],
     "name": "web",
     "public": true,
     "scope": "joncursi",
@@ -104,7 +95,6 @@
   "scripts": {
     "analyze": "cross-env ANALYZE=1 next build app",
     "build": "NODE_OPTIONS=--max_old_space_size=8192 next build app",
-    "now-build": "echo \"Don't do anything here\"",
     "cover:open": "npm-run-all cover:open:*",
     "cover:open:types": "opn $npm_package_config_coverageDir/flow-report/index.html",
     "cover:open:unit": "opn $npm_package_config_coverageDir/lcov-report/index.html",

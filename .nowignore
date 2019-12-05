@@ -1,0 +1,16 @@
+.circleci
+.DS_Store
+.env
+.env.example
+.env.production
+.gitignore
+.nowignore
+commitlint.config.js
+coverage
+fastlane
+flow-typed
+Gemfile
+Gemfile.lock
+node_modules
+prettier.config.js
+README.md
