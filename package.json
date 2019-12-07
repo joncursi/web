@@ -85,7 +85,6 @@
     },
     "name": "web",
     "public": true,
-    "scope": "joncursi",
     "version": 1
   },
   "repository": {
