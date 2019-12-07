@@ -81,7 +81,7 @@
   "name": "web",
   "now": {
     "engines": {
-      "node": ">=10.16.0"
+      "node": "10.x"
     },
     "name": "web",
     "public": true,
