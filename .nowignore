@@ -4,5 +4,6 @@
 !babelrc.js
 !next.config.js
 !package.json
+!package-lock.json
 !routes.js
 !server.js
