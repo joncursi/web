@@ -1,7 +1,7 @@
 *
 !app
 !app/**
-!babelrc.js
+!.babelrc.js
 !next.config.js
 !package.json
 !package-lock.json
