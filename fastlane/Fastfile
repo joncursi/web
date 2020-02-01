@@ -8,7 +8,7 @@
 # update_fastlane
 
 # Enforce a minimum fastlane version
-fastlane_version "2.137.0"
+fastlane_version "2.141.0"
 
 # Enforce a minimum ruby version
 ruby_version "2.4.2"
@@ -73,7 +73,7 @@ platform :web do
     )
   end
 
-  desc "Deploy to web.love"
+  desc "Deploy to production"
   lane :production do
     sh("npm run production:deploy:now")
   end
