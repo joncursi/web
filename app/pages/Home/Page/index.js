@@ -21,17 +21,17 @@ import styles, { globalStyles } from './styles';
 const Page = (): React.Node => {
   const profiles = [
     {
-      image: {
-        alt: 'Cheddur',
-        src: '/static/img/cheddur-icon-white.png',
-        style: {
-          height: 26,
-          width: 26,
-        },
-      },
+      Icon: TwitterIcon,
       link: {
         target: '_blank',
-        to: 'https://www.cheddur.com/users/joncursi',
+        to: 'https://twitter.com/joncursi',
+      },
+    },
+    {
+      Icon: GithubCircleIcon,
+      link: {
+        target: '_blank',
+        to: 'https://github.com/joncursi',
       },
     },
     {
@@ -42,20 +42,6 @@ const Page = (): React.Node => {
       },
     },
     {
-      Icon: FacebookIcon,
-      link: {
-        target: '_blank',
-        to: 'https://www.facebook.com/JonCursi/',
-      },
-    },
-    {
-      Icon: TwitterIcon,
-      link: {
-        target: '_blank',
-        to: 'https://twitter.com/joncursi',
-      },
-    },
-    {
       Icon: InstagramIcon,
       link: {
         target: '_blank',
@@ -63,17 +49,17 @@ const Page = (): React.Node => {
       },
     },
     {
+      Icon: FacebookIcon,
+      link: {
+        target: '_blank',
+        to: 'https://www.facebook.com/JonCursi/',
+      },
+    },
+    {
       Icon: LinkedinIcon,
       link: {
         target: '_blank',
         to: 'https://www.linkedin.com/in/joncursi/',
-      },
-    },
-    {
-      Icon: GithubCircleIcon,
-      link: {
-        target: '_blank',
-        to: 'https://github.com/joncursi',
       },
     },
     {
@@ -121,19 +107,12 @@ const Page = (): React.Node => {
                 variant="h6"
               >
                 {
-                  "I'm a software engineer who builds top-notch web and mobile apps, such as "
+                  "I'm a software engineer who builds top-notch web and mobile apps. Previously founded "
                 }
                 <Link target="_blank" to="https://www.cheddur.com/">
                   <span className="textLink">Cheddur</span>
                 </Link>
-                &mdash;
-                {
-                  'the social network of crypto. I also make videos about cryptocurrency on the internet. '
-                }
-                <Link target="_blank" to="https://www.cheddur.com/join">
-                  <span className="textLink">Subscribe to my newsletter</span>
-                </Link>
-                {' and follow me!'}
+                {', the social network of crypto. Follow me! 🤠'}
               </Typography>
 
               <div className="profiles">
@@ -159,8 +138,10 @@ const Page = (): React.Node => {
               </div>
 
               <Typography color="primary" variant="overline">
-                <Link target="_blank" to="https://earn.com/joncursi/">
-                  <span className="textLink">Business Inquiries</span>
+                <Link to="mailto:joncursi@gmail.com">
+                  <span className="textLink">
+                    Business Inquiries: joncursi@gmail.com
+                  </span>
                 </Link>
               </Typography>
             </div>
@@ -170,5 +151,4 @@ const Page = (): React.Node => {
     </React.Fragment>
   );
 };
-
 export default Page;

@@ -4,6 +4,7 @@
  */
 
 import * as React from 'react';
+import includes from 'lodash/includes';
 import isURL from 'validator/lib/isURL';
 
 import { Link as LinkImport } from '../../../routes';
@@ -30,13 +31,13 @@ const Link = ({
   to,
   ...props
 }: PropsFlowType): React.Node => {
-  const isExternalUrl = isURL(to);
+  const isRoute = !(isURL(to) || includes(to, 'mailto'));
 
   return (
     <React.Fragment>
       <style jsx>{styles}</style>
 
-      {isExternalUrl && (
+      {!isRoute && (
         <a
           className={className}
           href={to}
@@ -49,7 +50,7 @@ const Link = ({
         </a>
       )}
 
-      {!isExternalUrl && (
+      {isRoute && (
         <LinkImport params={params} route={to} {...props}>
           {/* eslint-disable jsx-a11y/no-static-element-interactions */}
           {/* eslint-disable jsx-a11y/click-events-have-key-events */}
