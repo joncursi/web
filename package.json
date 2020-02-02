@@ -4,111 +4,113 @@
     "email": "joncursi@gmail.com",
     "url": "https://github.com/joncursi/web/issues"
   },
-  "config": {
-    "coverageDir": "coverage"
-  },
   "contributors": [
     "Jon Cursi <joncursi@gmail.com>"
   ],
   "dependencies": {
-    "@material-ui/core": "3.9.3",
-    "@material-ui/icons": "3.0.2",
+    "@material-ui/core": "4.9.0",
+    "@material-ui/styles": "4.9.0",
     "@zeit/next-css": "1.0.1",
-    "express": "4.16.4",
+    "express": "4.17.1",
     "htmlescape": "1.1.1",
-    "jss": "9.8.7",
     "lodash": "4.17.15",
-    "mdi-material-ui": "5.10.0",
-    "next": "8.0.4",
+    "mdi-material-ui": "6.11.0",
+    "next": "9.2.1",
     "next-routes": "1.4.2",
-    "react": "16.8.6",
-    "react-art": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-facebook-pixel": "0.1.2",
-    "react-ga": "2.5.7",
-    "react-jss": "8.6.1",
-    "sitemap": "2.1.0",
-    "styled-jsx": "3.2.1",
-    "validator": "10.11.0"
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-facebook-pixel": "0.1.3",
+    "react-ga": "2.7.0",
+    "sitemap": "5.1.0",
+    "styled-jsx": "3.2.4",
+    "validator": "12.2.0",
+    "zlib": "^1.0.5"
   },
-  "description": "😎 Official \"Jon Cursi\" personal brand website.",
+  "description": "📣 Cheddur.com shutdown notice.",
   "devDependencies": {
-    "@babel/preset-flow": "7.0.0",
-    "@joncursi/eslint-config": "4.0.0",
-    "cross-env": "5.2.0",
-    "dotenv": "7.0.0",
-    "file-loader": "3.0.1",
-    "flow-bin": "0.97.0",
-    "flow-typed": "2.5.1",
-    "husky": "1.3.1",
-    "lint-staged": "8.1.5",
+    "@babel/preset-env": "7.8.4",
+    "@joncursi/eslint-config": "5.3.2",
+    "@testing-library/jest-dom": "5.1.0",
+    "@testing-library/react": "9.4.0",
+    "@types/express": "4.17.2",
+    "@types/htmlescape": "1.1.1",
+    "@types/jest": "25.1.1",
+    "@types/lodash": "4.14.149",
+    "@types/material-ui": "0.21.7",
+    "@types/node": "13.7.0",
+    "@types/react": "16.9.19",
+    "@types/react-dom": "16.9.5",
+    "@types/react-ga": "2.3.0",
+    "@types/styled-jsx": "2.2.8",
+    "@types/validator": "12.0.1",
+    "@types/zeit__next-typescript": "0.1.3",
+    "babel-jest": "25.1.0",
+    "babel-plugin-root-import": "6.4.1",
+    "babel-plugin-transform-imports": "2.0.0",
+    "cross-env": "7.0.0",
+    "dotenv-cli": "3.1.0",
+    "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
+    "eslint-import-resolver-typescript": "2.0.0",
+    "file-loader": "5.0.2",
+    "husky": "4.2.1",
+    "jest": "25.1.0",
+    "lint-staged": "10.0.7",
+    "nodemon": "2.0.2",
     "npm-run-all": "4.1.5",
-    "rimraf": "2.6.3",
-    "url-loader": "1.1.2",
-    "webpack-bundle-analyzer": "3.3.2"
+    "prettier": "1.19.1",
+    "react-test-renderer": "16.12.0",
+    "rimraf": "3.0.1",
+    "ts-jest": "25.1.0",
+    "ts-node": "8.6.2",
+    "typescript": "3.7.5",
+    "url-loader": "3.0.0",
+    "webpack-bundle-analyzer": "3.6.0",
+    "webpackbar": "4.0.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "@joncursi/eslint-config"
-    ],
-    "plugins": []
-  },
-  "eslintIgnore": [
-    "coverage",
-    "fastlane",
-    "flow-typed",
-    "node_modules"
-  ],
-  "homepage": "https://github.com/joncursi/web#readme",
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
+  "homepage": "https://github.com/joncursi/web/#readme",
   "keywords": [
-    "joncursi",
-    "web"
+    "cheddur",
+    "cheddur.com",
+    "next",
+    "react",
+    "shutdown",
+    "ui"
   ],
   "license": "MIT",
   "lint-staged": {
-    "*.{js,json,md}": [
+    "*.{js}": "npm run test:lint:js",
+    "*.{js,json,md,ts,tsx}": [
       "prettier --write",
       "git add"
     ],
-    "*.js": "eslint --rule 'flowtype-errors/show-errors: 0'",
-    "*.md": "markdownlint --config node_modules/@joncursi/eslint-config/markdownlint.config.json"
+    "*.{ts,tsx}": "npm run test:lint:ts",
+    "*.md": "npm run test:lint:md"
   },
-  "name": "web",
-  "now": {
-    "engines": {
-      "node": "10.x"
-    },
-    "name": "web",
-    "public": true,
-    "version": 1
-  },
+  "name": "@joncursi/web",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joncursi/web.git"
   },
   "scripts": {
     "analyze": "cross-env ANALYZE=1 next build app",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 next build app",
-    "cover:open": "npm-run-all cover:open:*",
-    "cover:open:types": "opn $npm_package_config_coverageDir/flow-report/index.html",
-    "cover:open:unit": "opn $npm_package_config_coverageDir/lcov-report/index.html",
-    "coverage": "npm-run-all coverage:*",
-    "coverage:types": "flow-coverage-report -i 'components/**/*.js' -i 'constants/**/*.js' -i 'helpers/**/*.js' -i 'layouts/**/*.js' -i 'pages/**/*.js' -t html -t json -t text -o 'coverage/flow-report'",
-    "dev": "dotenv node server.js",
-    "postinstall": "npm run update:types",
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 next build app && tsc --project app/tsconfig.json && tsc --project server/tsconfig.json",
+    "dev": "npm-run-all --parallel dev:start",
+    "dev:start": "unset NODE_ENV && dotenv -e .env -- nodemon",
     "production:deploy": "bundle exec fastlane web production",
-    "production:deploy:now": "npm run build && now --dotenv=.env.production --debug",
-    "start": "node server.js",
-    "test": "npm run test:lint",
-    "test:lint": "eslint --rule 'flowtype-errors/show-errors: 0' --fix .",
-    "test:types": "flow",
-    "update:types": "[ \"$NODE_ENV\" = production ] || flow-typed install --overwrite"
+    "production:deploy:now": "now --dotenv=.env.production --force --debug",
+    "start": "unset NODE_ENV && dotenv -e .env -- node app/.next/server/index.js",
+    "test": "npm-run-all test:**",
+    "test:lint:js": "eslint . --ext .js --quiet",
+    "test:lint:md": "markdownlint README.md --config node_modules/@joncursi/eslint-config/markdownlint.config.json",
+    "test:lint:ts": "eslint . --ext .ts,.tsx --quiet",
+    "test:types": "tsc --project app/tsconfig.json && tsc --noEmit --project server/tsconfig.json",
+    "test:unit": "unset NODE_ENV && dotenv -e .env.test -- jest --silent --maxWorkers=2"
   },
-  "version": "1.7.1"
+  "version": "2.0.0"
 }

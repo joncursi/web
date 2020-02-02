@@ -2,17 +2,16 @@
  * @prettier
  */
 
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-plugin-disable filenames, flowtype */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const WebpackBar = require('webpackbar');
 const withCSS = require('@zeit/next-css');
 
 // eslint-disable-next-line immutable/no-mutation
 module.exports = withCSS({
-  // Disable file-system routing of `pages` directory
   useFileSystemPublicRoutes: false,
-  webpack(config) {
+  webpack(config, { isServer }) {
     // use the bundle analyzer if `ANALYZE` is enabled
     if (process.env.ANALYZE) {
       config.plugins.push(
@@ -24,39 +23,11 @@ module.exports = withCSS({
       );
     }
 
-    config.module.rules.push(
-      // load images
-      {
-        test: /\.(jpe?g|png|svg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              fallback: 'file-loader',
-              limit: 8192,
-              name: '[name]-[hash].[ext]',
-              outputPath: '../static/img/',
-              publicPath: '/_next/static/img/',
-            },
-          },
-        ],
-      },
-      // load fonts
-      {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              fallback: 'file-loader',
-              limit: 8192,
-              name: '[name]-[hash].[ext]',
-              outputPath: '../static/fonts/',
-              publicPath: '/_next/static/fonts/',
-            },
-          },
-        ],
-      },
+    config.plugins.push(
+      new WebpackBar({
+        color: isServer ? 'orange' : 'green',
+        name: isServer ? 'server' : 'client',
+      }),
     );
 
     return config;

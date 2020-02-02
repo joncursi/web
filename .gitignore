@@ -1,20 +1,7 @@
-# Code Coverage
-coverage
-
-# Environment variables
+.DS_Store
 .env
 .env.production
-
-# Fastlane
-fastlane/.env
+.next
 fastlane/README.md
 fastlane/report.xml
-
-# Next.js
-app/.next
-
-# NPM
 node_modules
-
-# System
-.DS_Store
