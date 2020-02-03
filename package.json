@@ -26,7 +26,7 @@
     "validator": "12.2.0",
     "zlib": "1.0.5"
   },
-  "description": "📣 Cheddur.com shutdown notice.",
+  "description": "🕸️ Website for my personal brand.",
   "devDependencies": {
     "@babel/preset-env": "7.8.4",
     "@joncursi/eslint-config": "5.3.2",
@@ -67,18 +67,16 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "homepage": "https://github.com/joncursi/web/#readme",
   "keywords": [
-    "cheddur",
-    "cheddur.com",
+    "joncursi",
+    "joncursi.com",
     "next",
     "react",
-    "shutdown",
-    "ui"
+    "typescript"
   ],
   "license": "MIT",
   "lint-staged": {
