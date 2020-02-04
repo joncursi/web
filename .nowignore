@@ -8,5 +8,3 @@
 !now.json
 !package.json
 !package-lock.json
-!routes.js
-!server.js

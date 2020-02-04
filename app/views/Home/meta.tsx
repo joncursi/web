@@ -9,7 +9,6 @@ import RenderMetaTags from '~/components/RenderMetaTags';
 const Meta: React.FC = (): React.ReactElement<any> => (
   <RenderMetaTags
     description="I'm a software engineer who builds top-notch web and mobile apps. Previously founded Cheddur, the social network of crypto. Follow me! 🤠"
-    imageUrl="/static/img/me-seo-thumbnail.jpg"
     keywords={[
       'cheddur',
       'cheddur app',
@@ -22,7 +21,6 @@ const Meta: React.FC = (): React.ReactElement<any> => (
       'youtube',
       'youtuber',
     ]}
-    title="Jon Cursi"
   />
 );
 

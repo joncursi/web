@@ -1,6 +1,7 @@
 # Web
 
-🕸️ Website for my personal brand.
+🕸️ Website for my personal brand. Based on
+[`@joncursi/next-base`](https://github.com/joncursi/next-base).
 
 [![CircleCI](https://circleci.com/gh/joncursi/web.svg?style=shield)](https://circleci.com/gh/joncursi/web)
 

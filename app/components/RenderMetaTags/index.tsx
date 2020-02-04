@@ -20,7 +20,7 @@ const RenderMetaTags: React.FC<Props> = ({
   imageUrl = '/static/img/meta-default.jpg',
   keywords,
   noIndex,
-  title,
+  title = NAMES.APP,
 }: Props): React.ReactElement<Props> => (
   <Head>
     {/* Descriptions */}

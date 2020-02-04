@@ -102,9 +102,9 @@
     "production:deploy:now": "now --dotenv=.env.production --force --debug",
     "start": "unset NODE_ENV && dotenv -e .env -- node app/.next/server/index.js",
     "test": "npm-run-all test:**",
-    "test:lint:js": "eslint . --ext .js --quiet",
+    "test:lint:js": "eslint . --ext .js --fix --quiet",
     "test:lint:md": "markdownlint README.md --config node_modules/@joncursi/eslint-config/markdownlint.config.json",
-    "test:lint:ts": "eslint . --ext .ts,.tsx --quiet",
+    "test:lint:ts": "eslint . --ext .ts,.tsx --fix --quiet",
     "test:types": "tsc --project app/tsconfig.json && tsc --noEmit --project server/tsconfig.json",
     "test:unit": "unset NODE_ENV && dotenv -e .env.test -- jest --silent --maxWorkers=2"
   },
