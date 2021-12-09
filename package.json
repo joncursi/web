@@ -15,7 +15,7 @@
     "htmlescape": "1.1.1",
     "lodash": "4.17.15",
     "mdi-material-ui": "6.11.0",
-    "next": "9.2.1",
+    "next": "11.1.3",
     "next-routes": "1.4.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
